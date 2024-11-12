@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Declaração da estrutura 'no'.
+// Declaração da estrutura 'no'
 struct no {
   int valor;
   struct no *proximo;
 };
 
-// Definição do tipo 'No'.
+// Definição do tipo 'No'
 typedef struct no No;
 
-// Função de inserção no início da lista.
-void insercao_no_inicio_da_lsl(No **cabeca, int valor) {
+// Função de inserção no início da lista
+void insercao_inicio_lista(No **cabeca, int valor) {
   No *novo_no = malloc(sizeof(No));
   novo_no->valor = valor;
   novo_no->proximo = *cabeca;
   *cabeca = novo_no;
 }
 
-// Função de inserção no fim da lista.
-void insercao_no_fim_da_lsl(No **cabeca, int valor) {
+// Função de inserção no fim da lista
+void insercao_fim_lista(No **cabeca, int valor) {
   No *novo_no = malloc(sizeof(No));
   novo_no->valor = valor;
   novo_no->proximo = NULL;
@@ -38,10 +38,10 @@ void insercao_no_fim_da_lsl(No **cabeca, int valor) {
   atual->proximo = novo_no;
 }
 
-// Função de inserção em uma posição intermediária da lista.
-void insercao_no_meio_da_lsl(No **cabeca, int valor, int posicao) {
+// Função de inserção em uma posição intermediária da lista
+void insercao_meio_lista(No **cabeca, int valor, int posicao) {
   if (posicao == 0) {
-    insercao_no_inicio_da_lsl(cabeca, valor);
+    (cabeca, valor);
     return;
   }
 
@@ -71,8 +71,8 @@ void insercao_no_meio_da_lsl(No **cabeca, int valor, int posicao) {
   }
 }
 
-// Função de remoção no início da lista.
-void remocao_no_inicio_da_lsl(No **cabeca) {
+// Função de remoção no início da lista
+void remocao_inicio_lista(No **cabeca) {
   if (*cabeca == NULL) {
     printf("A lista está vazia\n");
     return;
@@ -83,8 +83,8 @@ void remocao_no_inicio_da_lsl(No **cabeca) {
   free(temp);
 }
 
-// Função de remoção no fim da lista.
-void remocao_no_fim_da_lsl(No **cabeca) {
+// Função de remoção no fim da lista
+void remocao_fim_lista(No abeca) {
   if (*cabeca == NULL) {
     printf("A lista está vazia\n");
     return;
@@ -108,8 +108,8 @@ void remocao_no_fim_da_lsl(No **cabeca) {
   free(atual);
 }
 
-// Função de remoção em uma posição intermediária da lista.
-void remocao_no_meio_da_lsl(No **cabeca, int valor) {
+// Função de remoção em uma posição intermediária da lista
+void remocao_meio_lista(No **cabeca, int valor) {
   if (*cabeca == NULL) {
     printf("Lista vazia\n");
     return;
@@ -137,8 +137,8 @@ void remocao_no_meio_da_lsl(No **cabeca, int valor) {
   free(atual);
 }
 
-// Função de impressão de valores da lista.
-void imprime_a_lsl(No *cabeca) {
+// Função de impressão de valores da lista
+void imprime_lista(No *cabeca) {
   if (cabeca == NULL) {
     printf("Lista vazia\n");
     return;
@@ -153,8 +153,8 @@ void imprime_a_lsl(No *cabeca) {
   printf("\n");
 }
 
-// Função de busca por valor na lista.
-void busca_por_valor_na_lsl(No *cabeca, int valor) {
+// Função de busca por valor na lista
+void busca_valor_lista(No *cabeca, int valor) {
   No *atual = cabeca;
 
   while (atual != NULL && atual->valor != valor) {
@@ -167,8 +167,8 @@ void busca_por_valor_na_lsl(No *cabeca, int valor) {
     printf("\nValor %d não encontrado\n", valor);
 }
 
-// Função de varredura da lista.
-void percorre_a_lsl(No *cabeca) {
+// Função de varredura da lista
+void percorre_lista(No *cabeca) {
   No *atual = cabeca;
   int total = 0;
 
@@ -180,68 +180,58 @@ void percorre_a_lsl(No *cabeca) {
 }
 
 int main() {
-  // Cria uma lista simplesmente ligada vazia.
+  // Cria uma lista simplesmente ligada e vazia
   No *cabeca = NULL;
 
-  // Insere elementos no início da lista.
-  printf("Inserido 10 e 20 no início da lista"); // Adicionando 10 e 20 no início da lista
-  insercao_no_inicio_da_lsl(&cabeca, 10);
-  insercao_no_inicio_da_lsl(&cabeca, 20);
+  printf("Inserido 10 e 20 no início da lista");
 
-  // Imprime a lista.
-  printf("\nLista após as inserções no início: "); // Imprimindo a lista após inserir 10 e 20
-  imprime_a_lsl(cabeca);
+  printf("\nLista após as inserções no início: ");
+  imprime_lista(cabeca);
 
-  // Insere elementos no fim da lista.
-  printf("\nInserindo 40 e 50 no fim da lista"); // Adicionando 40 e 50 ao fim da lista
-  insercao_no_fim_da_lsl(&cabeca, 40);
-  insercao_no_fim_da_lsl(&cabeca, 50);
+  printf("\nInserindo 40 e 50 no fim da lista");
+  insercao_fim_lista(&cabeca, 40);
+  insercao_fim_lista(&cabeca, 50);
 
-  // Imprime a lista.
-  printf("\nLista após as inserções no fim: "); // Imprimindo a lista após inserir 40 e 50
-  imprime_a_lsl(cabeca);
+  printf("\nLista após as inserções no fim: ");
+  imprime_lista(cabeca);
 
-  // Insere elemento em uma posição intermediária da lista.
-  printf("\nInserindo 25 na posição 3 da lista"); // Inserindo 25 na posição 3 da lista
-  insercao_no_meio_da_lsl(&cabeca, 25, 3);
+  printf("\nInserindo 25 na posição 3 da lista");
+  insercao_meio_lista(&cabeca, 25, 3);
 
-  // Imprime a lista.
-  printf("\nLista após a inserção no meio: "); // Imprimindo a lista após inserir 25 na posição 3
-  imprime_a_lsl(cabeca);
+  printf("\nLista após a inserção no meio: ");
+  imprime_lista(cabeca);
 
-  // Remove no início da lista.
-  printf("\nRemovendo o elemento do início da lista"); // Removendo o elemento do início da lista
-  remocao_no_inicio_da_lsl(&cabeca);
+  printf("\nRemovendo o elemento do início da lista");
+  remocao_inicio_lista(&cabeca);
 
-  // Imprime a lista.
-  printf("\nLista após a remoção do início: "); // Imprimindo a lista após remover o elemento do início
-  imprime_a_lsl(cabeca);
+  printf("\nLista após a remoção do início: ");
+  imprime_lista(cabeca);
 
-  // Remove no fim da lista.
-  printf("\nRemovendo o elemento do fim da lista"); // Removendo o elemento do fim da lista
-  remocao_no_fim_da_lsl(&cabeca);
+  printf("\nRemovendo o elemento do fim da lista");
+  remocao_fim_lista(&cabeca);
 
-  // Imprime a lista.
-  printf("\nLista após a remoção do fim: "); // Imprimindo a lista após remover o elemento do fim
-  imprime_a_lsl(cabeca);
+  printf("\nLista após a remoção do fim: ");
+  imprime_lista(cabeca);
 
-  // Remove em uma posição intermediária na lista por valor.
-  printf("\nRemovendo o elemento de valor 25 da lista"); // Removendo o elemento de valor 25 da lista
-  remocao_no_meio_da_lsl(&cabeca, 25);
+  printf("\nRemovendo o elemento de valor 25 da lista");
+  remocao_meio_lista(&cabeca, 25);
+  
+  printf("\nLista após a remoção do meio (valor 25): ");
+  imprime_lista(cabeca);
+  int valor_busca;
+  (&cabeca, 25);
 
-  // Imprime a lista.
-  printf("\nLista após a remoção do meio (valor 25): "); // Imprimindo a lista após remover o elemento de valor 25
-  imprime_a_lsl(cabeca);
+  printf("\nLista após a remoção do meio (valor 25): ");
+  imprime_lista(cabeca);
 
-  // Busca por um valor na lista.
+  // Busca por um valor na lista
   int valor_busca;
   printf("\nDigite o valor que deseja buscar: ");
   scanf("%d", &valor_busca);
-  busca_por_valor_na_lsl(cabeca, valor_busca);
+  busca_valor_lista(cabeca, valor_busca);
 
-  // Varre a lista.
-  printf("\nVarrendo a lista para somar os valores"); // Somando os valores da lista
-  percorre_a_lsl(cabeca);
+  printf("\nVarrendo a lista para somar os valores");
+  percorre_lista(cabeca);
 
   return 0;
 }
